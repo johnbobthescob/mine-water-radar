@@ -1,0 +1,166 @@
+{
+  "origin": "synthetic",
+  "label": "FICTIONAL SYNTHETIC EDGE CASES — never source evidence",
+  "complete_snapshot": false,
+  "ambiguous_exact_name": {
+    "projects": [
+      {
+        "project_id": "SYNTH-PROJ-X",
+        "proj_title": "Fictional Twin Name"
+      },
+      {
+        "project_id": "SYNTH-PROJ-Y",
+        "proj_title": "Fictional Twin Name"
+      }
+    ],
+    "candidate": {
+      "source_id": "SYNTH-EPBC-01",
+      "name": "Fictional Twin Name"
+    },
+    "expected": "unresolved ambiguous exact match"
+  },
+  "deposit_named_borefield": {
+    "site": {
+      "site_code": "SYNTH-DEPOSIT-1",
+      "proj_code": "SYNTH-PROJ-DEPOSIT",
+      "proj_title": "Fictional Garnet Plain",
+      "site_title": "Borefield",
+      "site_type_": "Deposit",
+      "site_sub_t": "Unspecified",
+      "site_stage": "Undeveloped",
+      "site_commo": "SYNTHETIC",
+      "target_com": "SYNTHETIC",
+      "commodity": "SYNTHETIC",
+      "latitude": -25.0,
+      "longitude": 120.0,
+      "extract_da": "2026-10-30T00:00:00Z"
+    },
+    "expected": "not classified as water infrastructure because site_type_ is Deposit"
+  },
+  "wamex_negated_historical": {
+    "records": [
+      {
+        "anumber": 900001,
+        "project": "Fictional Red Dust Project",
+        "report_year": 1993,
+        "date_released": "2026-10-01",
+        "abstract": "No dewatering was required for the historical works."
+      },
+      {
+        "anumber": 900002,
+        "project": "Fictional Red Dust Project",
+        "report_year": 1994,
+        "date_released": "2026-10-02",
+        "abstract": "Dewatering was undertaken during the 1993 program."
+      }
+    ],
+    "expected": "negated and historical clauses cannot assert current scope"
+  },
+  "stale_and_missing_dates": {
+    "records": [
+      {
+        "site_code": "SYNTH-OLD",
+        "extract_da": "2026-01-01T00:00:00Z"
+      },
+      {
+        "site_code": "SYNTH-NODATE",
+        "extract_da": null
+      },
+      {
+        "source_id": "SYNTH-EPBC-YEAR",
+        "YEAR": 2021
+      }
+    ],
+    "expected": "retain date precision; no freshness inferred"
+  },
+  "conflicting_business_keys": {
+    "records": [
+      {
+        "site_code": "SYNTH-CONFLICT",
+        "site_stage": "Proposed"
+      },
+      {
+        "site_code": "SYNTH-CONFLICT",
+        "site_stage": "Operating"
+      }
+    ],
+    "expected": "fail conflicting business key"
+  },
+  "multi_holder_tenement": {
+    "record": {
+      "tenid": "SYNTH-TEN-1",
+      "tenstatus": "LIVE",
+      "holdercnt": 2,
+      "holder1": "FICTIONAL HOLDER ONE PTY LTD",
+      "holder2": "FICTIONAL HOLDER TWO PTY LTD",
+      "grantdate": null,
+      "startdate": null,
+      "enddate": null
+    },
+    "expected": "retain both holders; neither is confirmed operator"
+  },
+  "failed_truncated_pagination": {
+    "pages": [
+      {
+        "object_ids": [
+          1,
+          2
+        ],
+        "features": [
+          1,
+          2
+        ],
+        "exceededTransferLimit": true
+      },
+      {
+        "object_ids": [
+          3
+        ],
+        "features": [
+          3
+        ],
+        "exceededTransferLimit": true
+      }
+    ],
+    "final_error": "synthetic page transport failure",
+    "expected": "incomplete scope cannot be committed as complete"
+  },
+  "reviewed_approval": {
+    "valid": {
+      "origin": "synthetic",
+      "source_id": "SYNTH-EPBC-APPROVAL-1",
+      "project_id": "SYNTH-PROJ-ALPHA",
+      "approval_excerpt": "Fictional action approved with explicit dewatering scope.",
+      "water_scope_excerpt": "Fictional action requires mine dewatering.",
+      "reviewed_at": "2026-11-10T00:00:00Z",
+      "synthetic": true
+    },
+    "invalid": {
+      "origin": "synthetic",
+      "source_id": "SYNTH-EPBC-GENERIC-1",
+      "project_id": "SYNTH-PROJ-ALPHA",
+      "approval_excerpt": "Post-Approval",
+      "water_scope_excerpt": "Fictional borefield inferred from a site title.",
+      "synthetic": true
+    },
+    "expected": "valid case is only a synthetic validation shape; generic status/inference fails"
+  },
+  "contractor_evidence": {
+    "valid_shape": {
+      "source_id": "SYNTH-WAMEX-CONTRACT-1",
+      "name": "FICTIONAL WATER CONTRACTOR LTD",
+      "role": "appointed contractor",
+      "scope": "fictional mine-water works",
+      "source_date": "2026-10-15",
+      "synthetic": true
+    },
+    "invalid_shape": {
+      "source_id": "SYNTH-WAMEX-HIST-1",
+      "name": "FICTIONAL REPORTING OPERATOR",
+      "role": "historical reporting operator",
+      "source_date": "1993",
+      "synthetic": true
+    },
+    "expected": "reviewed appointment and date required; operator is not contractor"
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "manifest_version": 1,
+  "description": "Fixture provenance and integrity index. Recorded files are unchanged partial research payloads; synthetic cases are fictional and cannot be used as source evidence.",
+  "replay_format": {
+    "recorded": "replay/recorded-baseline.json lists explicit business IDs from unchanged recorded payloads. data_mode fixture:selected-records, complete_snapshot=false and statewide=false are mandatory; source transfer-limit flags remain exactly as captured (true where present, absent/unknown where the original envelope omitted the field).",
+    "synthetic": "replay/synthetic-a.json, synthetic-b.json and synthetic-c.json each represent fictional complete snapshots at fixed dates. Each has origin=synthetic, complete_snapshot=true, scope=synthetic:complete-snapshot, and MINEDEX-like records. C carries the same business facts as B in a different record order and with a new extract timestamp.",
+    "warning": "Complete means complete only within the fictional test scenario; it does not represent any real dataset or current WA conditions."
+  },
+  "fixtures": [
+    {
+      "path": "recorded/epbc-count.json",
+      "sha256": "37a061f77f849f74f942642ab5400392de094eaafcf7413cd08c62b63bf7ecd7",
+      "origin": "recorded",
+      "source_path": "research/samples/epbc-count.json",
+      "source": "Referrals Spatial Database — Public",
+      "original_capture_time_utc": "2026-11-22T08:15:24.310418+00:00",
+      "original_url": "https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/EPBC_Referrals/MapServer/0/query?f=json&where=1%3D1&returnCountOnly=true",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Referrals Spatial Database — Public"
+      },
+      "response_truncated": null,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": null
+    },
+    {
+      "path": "recorded/epbc-sample.json",
+      "sha256": "374d12275ba08aa091694f2f855209b8bc8e506bf5f19235f5ea1612bc5a4121",
+      "origin": "recorded",
+      "source_path": "research/samples/epbc-sample.json",
+      "source": "Referrals Spatial Database — Public",
+      "original_capture_time_utc": "2026-11-22T08:15:24.311627+00:00",
+      "original_url": "https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/EPBC_Referrals/MapServer/0/query?f=json&where=NAME+LIKE+%27%25West+Angelas%25%27&outFields=REFERENCE_NUMBER%2CNAME%2CPRIMARY_JURISDICTION%2CREFERRAL_DECISION%2CSTANDARD_DETERMINATION%2CSTATUS_DESCRIPTION%2CSTAGE_NAME%2CREFERRAL_TYPE%2CYEAR%2CCATEGORY%2CREFERRAL_URL&returnGeometry=false&resultRecordCount=3",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Referrals Spatial Database — Public"
+      },
+      "response_truncated": null,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": null
+    },
+    {
+      "path": "recorded/epbc-wa-count.json",
+      "sha256": "0d0948812d083ddd88f44889fa8fbfdb1544ef65c4dd6a551276c118ea4bb366",
+      "origin": "recorded",
+      "source_path": "research/samples/epbc-wa-count.json",
+      "source": "Referrals Spatial Database — Public",
+      "original_capture_time_utc": "2026-11-22T08:15:53.917451+00:00",
+      "original_url": "https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/EPBC_Referrals/MapServer/0/query?f=json&where=PRIMARY_JURISDICTION%3D%27WA%27&returnCountOnly=true",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Referrals Spatial Database — Public"
+      },
+      "response_truncated": null,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": null
+    },
+    {
+      "path": "recorded/epbc-wa-mining-count.json",
+      "sha256": "ff4f31a06c4ba51af3887cf5272452148379ba1f75ea08ff9a0b3eeca36dbc72",
+      "origin": "recorded",
+      "source_path": "research/samples/epbc-wa-mining-count.json",
+      "source": "Referrals Spatial Database — Public",
+      "original_capture_time_utc": "2026-11-22T08:15:54.967825+00:00",
+      "original_url": "https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/EPBC_Referrals/MapServer/0/query?f=json&where=PRIMARY_JURISDICTION%3D%27WA%27+AND+CATEGORY%3D%27Mining%27&returnCountOnly=true",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Referrals Spatial Database — Public"
+      },
+      "response_truncated": null,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": null
+    },
+    {
+      "path": "recorded/minedex-count.json",
+      "sha256": "4978b0840d1c208ac4da3d5877644f7d86a4f59f8ea8b26b57e9e0b3b63657e2",
+      "origin": "recorded",
+      "source_path": "research/samples/minedex-count.json",
+      "source": "MINEDEX (DMIRS-001)",
+      "original_capture_time_utc": "2026-11-22T08:12:27.103056+00:00",
+      "original_url": "https://public-services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Industry_and_Mining/MapServer/0/query?f=json&where=1%3D1&returnCountOnly=true",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "MINEDEX (DMIRS-001)"
+      },
+      "response_truncated": null,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": null
+    },
+    {
+      "path": "recorded/minedex-project-count.json",
+      "sha256": "abe03c25c2c67efd6b29e5d47cff197bccd4e374bb9e70ac98b33973f111d2e0",
+      "origin": "recorded",
+      "source_path": "research/samples/minedex-project-count.json",
+      "source": "MINEDEX (DMIRS-001)",
+      "original_capture_time_utc": "2026-11-22T08:13:59.955596+00:00",
+      "original_url": "https://public-services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Industry_and_Mining/MapServer/0/query?f=json&where=proj_code+IS+NOT+NULL+AND+proj_code+%3C%3E+%27%27&outFields=proj_code&returnDistinctValues=true&returnCountOnly=true&returnGeometry=false",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "MINEDEX (DMIRS-001)"
+      },
+      "response_truncated": null,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": null
+    },
+    {
+      "path": "recorded/minedex-sample.json",
+      "sha256": "37a66db0cd7a29034eb42932da19baa3eb45f1f6e178725fceb93dcc47d539ce",
+      "origin": "recorded",
+      "source_path": "research/samples/minedex-sample.json",
+      "source": "MINEDEX (DMIRS-001)",
+      "original_capture_time_utc": "2026-11-22T08:12:27.103637+00:00",
+      "original_url": "https://public-services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Industry_and_Mining/MapServer/0/query?f=json&where=1%3D1&outFields=%2A&returnGeometry=false&resultRecordCount=3&orderByFields=site_code",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "MINEDEX (DMIRS-001)"
+      },
+      "response_truncated": true,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": true
+    },
+    {
+      "path": "recorded/minedex-stages.json",
+      "sha256": "af80d0b3d983102da72080a260b1bbf2819dd1bee2f88678dc564c4e13dcbc74",
+      "origin": "recorded",
+      "source_path": "research/samples/minedex-stages.json",
+      "source": "MINEDEX (DMIRS-001)",
+      "original_capture_time_utc": "2026-11-22T08:13:59.953917+00:00",
+      "original_url": "https://public-services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Industry_and_Mining/MapServer/0/query?f=json&where=1%3D1&groupByFieldsForStatistics=site_stage&outStatistics=%5B%7B%22statisticType%22%3A+%22count%22%2C+%22onStatisticField%22%3A+%22site_code%22%2C+%22outStatisticFieldName%22%3A+%22n%22%7D%5D&returnGeometry=false",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "MINEDEX (DMIRS-001)"
+      },
+      "response_truncated": null,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": null
+    },
+    {
+      "path": "recorded/minedex-water-types.json",
+      "sha256": "18f6f76ae279de6b22dfbe59a084f910b7fff1cba31000a4a04a2a223a69971e",
+      "origin": "recorded",
+      "source_path": "research/samples/minedex-water-types.json",
+      "source": "MINEDEX (DMIRS-001)",
+      "original_capture_time_utc": "2026-11-22T08:14:00.476003+00:00",
+      "original_url": "https://public-services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Industry_and_Mining/MapServer/0/query?f=json&where=UPPER%28site_type_%29+LIKE+%27%25WATER%25%27+OR+UPPER%28site_sub_t%29+LIKE+%27%25WATER%25%27+OR+UPPER%28site_title%29+LIKE+%27%25BOREFIELD%25%27&outFields=site_code%2Csite_title%2Cproj_code%2Csite_type_%2Csite_sub_t%2Csite_stage&returnGeometry=false&resultRecordCount=5",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "MINEDEX (DMIRS-001)"
+      },
+      "response_truncated": true,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": true
+    },
+    {
+      "path": "recorded/tenements-count.json",
+      "sha256": "c2b22de0eb376493f4e32975ae0b853eb3ef82583d2f7707429316e817558935",
+      "origin": "recorded",
+      "source_path": "research/samples/tenements-count.json",
+      "source": "Mining Tenements (DMIRS-003)",
+      "original_capture_time_utc": "2026-11-22T08:12:27.584593+00:00",
+      "original_url": "https://public-services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Industry_and_Mining/MapServer/3/query?f=json&where=1%3D1&returnCountOnly=true",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Mining Tenements (DMIRS-003)"
+      },
+      "response_truncated": null,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": null
+    },
+    {
+      "path": "recorded/tenements-sample.json",
+      "sha256": "e4885592b6a14a9fb32c57c152905a9106b87aa1f107bb7f206e0bbc3e760e07",
+      "origin": "recorded",
+      "source_path": "research/samples/tenements-sample.json",
+      "source": "Mining Tenements (DMIRS-003)",
+      "original_capture_time_utc": "2026-11-22T08:12:27.604653+00:00",
+      "original_url": "https://public-services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Industry_and_Mining/MapServer/3/query?f=json&where=tenstatus%3D%27LIVE%27&outFields=%2A&returnGeometry=false&resultRecordCount=1",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Mining Tenements (DMIRS-003)"
+      },
+      "response_truncated": true,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": true
+    },
+    {
+      "path": "recorded/wamex-count.json",
+      "sha256": "21b3312d490a24389efce9d863e2d08f1da1beadd7169b873a4b48b6f5f6167b",
+      "origin": "recorded",
+      "source_path": "research/samples/wamex-count.json",
+      "source": "Mineral exploration reports (WAMEX) (DMIRS-033)",
+      "original_capture_time_utc": "2026-11-22T08:14:00.511816+00:00",
+      "original_url": "https://public-services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Industry_and_Mining/MapServer/22/query?f=json&where=1%3D1&returnCountOnly=true",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Mineral exploration reports (WAMEX) (DMIRS-033)"
+      },
+      "response_truncated": null,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": null
+    },
+    {
+      "path": "recorded/wamex-water.json",
+      "sha256": "5fc7415c46316e696b4a74531469b40011eb861d28a7e691f9084a41a6339775",
+      "origin": "recorded",
+      "source_path": "research/samples/wamex-water.json",
+      "source": "Mineral exploration reports (WAMEX) (DMIRS-033)",
+      "original_capture_time_utc": "2026-11-22T08:14:01.017499+00:00",
+      "original_url": "https://public-services.slip.wa.gov.au/public/rest/services/SLIP_Public_Services/Industry_and_Mining/MapServer/22/query?f=json&where=UPPER%28abstract%29+LIKE+%27%25DEWATER%25%27&outFields=anumber%2Ctitle%2Cproject%2Coperator%2Creport_year%2Cdate_released%2Cabstract%2Cdpxe_abs%2Cdpxe_rep&returnGeometry=false&resultRecordCount=1",
+      "licence": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Mineral exploration reports (WAMEX) (DMIRS-033)"
+      },
+      "response_truncated": true,
+      "transformation": "byte-for-byte copy of research sample; no field or envelope changes",
+      "scope": "partial response envelope; not statewide or complete",
+      "original_exceeded_transfer_limit": true
+    },
+    {
+      "path": "replay/recorded-baseline.json",
+      "sha256": "9ce63cc7e3662454c7f4ec2d57d5c48bd7bb7b9fc32d9d97b60f74522fa76526",
+      "origin": "recorded",
+      "source_path": "derived from explicitly selected unchanged facts in tests/fixtures/recorded/",
+      "original_capture_time_utc": null,
+      "original_url": null,
+      "licence": {
+        "name": "CC BY 4.0 source facts; replay manifest adds no source facts",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "response_truncated": true,
+      "transformation": "references selected business IDs without altering source payloads; explicitly partial and not statewide"
+    },
+    {
+      "path": "replay/synthetic-a.json",
+      "sha256": "620baa4944cf5ad6ac8745a7e31cd12623fcbe5463180c13455d80b7459fab07",
+      "origin": "synthetic",
+      "source_path": null,
+      "original_capture_time_utc": null,
+      "original_url": null,
+      "licence": null,
+      "response_truncated": false,
+      "transformation": "fictional synthetic test data; not evidence and not a real source snapshot"
+    },
+    {
+      "path": "replay/synthetic-b.json",
+      "sha256": "34091160bc5b65aa064aeaaaaa68e184d49ecbe83da2473db0920fef4b5f5d61",
+      "origin": "synthetic",
+      "source_path": null,
+      "original_capture_time_utc": null,
+      "original_url": null,
+      "licence": null,
+      "response_truncated": false,
+      "transformation": "fictional synthetic test data; not evidence and not a real source snapshot"
+    },
+    {
+      "path": "replay/synthetic-c.json",
+      "sha256": "f6b338aaf76abee7ad652898adbe52e97a32ad365b2ff33dd4b6aa504305247a",
+      "origin": "synthetic",
+      "source_path": null,
+      "original_capture_time_utc": null,
+      "original_url": null,
+      "licence": null,
+      "response_truncated": false,
+      "transformation": "fictional synthetic test data; not evidence and not a real source snapshot"
+    },
+    {
+      "path": "synthetic/edge-cases.json",
+      "sha256": "22b08110333e4ef5a94464cc2b3d7a199175dbfb67e36afebfaaa4f2fe79aa33",
+      "origin": "synthetic",
+      "source_path": null,
+      "original_capture_time_utc": null,
+      "original_url": null,
+      "licence": null,
+      "response_truncated": false,
+      "transformation": "fictional synthetic test data; not evidence and not a real source snapshot"
+    }
+  ]
+}

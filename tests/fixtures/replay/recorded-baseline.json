@@ -1,0 +1,72 @@
+{
+  "fixture_id": "recorded-baseline",
+  "origin": "recorded",
+  "label": "RECORDED SELECTED-RECORDS BASELINE — partial research sample, not statewide",
+  "data_mode": "fixture:selected-records",
+  "complete_snapshot": false,
+  "statewide": false,
+  "limitations": [
+    "Only explicitly selected business records from partial research response envelopes.",
+    "Not a statewide layer snapshot and not valid for deletion or completeness inference.",
+    "Original response truncation flags remain in the referenced recorded files."
+  ],
+  "selections": [
+    {
+      "source": "MINEDEX (DMIRS-001)",
+      "fixture": "recorded/minedex-sample.json",
+      "business_id_field": "site_code",
+      "business_ids": [
+        "S0000001",
+        "S0000002",
+        "S0000005"
+      ],
+      "response_exceeded_transfer_limit": true
+    },
+    {
+      "source": "MINEDEX water-type sample",
+      "fixture": "recorded/minedex-water-types.json",
+      "business_id_field": "site_code",
+      "business_ids": [
+        "S0002691",
+        "S0023617",
+        "S0223758",
+        "S0225844",
+        "S0226174"
+      ],
+      "response_exceeded_transfer_limit": true
+    },
+    {
+      "source": "Mining Tenements (DMIRS-003)",
+      "fixture": "recorded/tenements-sample.json",
+      "business_id_field": "tenid",
+      "business_ids": [
+        "CML1200448 "
+      ],
+      "response_exceeded_transfer_limit": true
+    },
+    {
+      "source": "WAMEX (DMIRS-033)",
+      "fixture": "recorded/wamex-water.json",
+      "business_id_field": "anumber",
+      "business_ids": [
+        39940
+      ],
+      "response_exceeded_transfer_limit": true
+    },
+    {
+      "source": "EPBC Referrals Spatial Database — Public",
+      "fixture": "recorded/epbc-sample.json",
+      "business_id_field": "REFERENCE_NUMBER",
+      "business_ids": [
+        "2021/8923",
+        "2018/8299"
+      ],
+      "response_exceeded_transfer_limit": null
+    }
+  ],
+  "recorded_caveats": [
+    "EPBC source dates have YEAR precision only and REFERRAL_URL is malformed and generic.",
+    "WAMEX contains a historical report and a 250-character abstract.",
+    "Tenement sample contains pre-1970 dates and historical address fields; production clients must not request addr1–addr9."
+  ]
+}
