@@ -116,6 +116,9 @@ class SourceRegistry:
                      "orderByFields", "resultOffset", "resultRecordCount", "geometry", "geometryType", "inSR", "spatialRel"}
         if set(args) - permitted or args.get("f") != "json" or args.get("returnGeometry") != "false":
             raise PolicyError("unapproved query parameters")
+        modes = {key for key in ("returnIdsOnly", "returnCountOnly") if key in args}
+        if len(modes) > 1 or (not modes and "outFields" not in args):
+            raise PolicyError("queries require one retrieval mode and explicit attribute fields")
         if spec.name == "minedex" and args.get("where") != "1=1":
             raise PolicyError("MINEDEX must use the complete layer scope")
         if spec.name == "epbc" and args.get("where") != EPBC_WHERE:
@@ -157,3 +160,71 @@ class SourceRegistry:
                 raise PolicyError("invalid page bound")
         if "objectIds" in args and not re.fullmatch(r"\d+(,\d+)*", args["objectIds"]):
             raise PolicyError("invalid object IDs")
+
+
+def verify_licence(http, source: str):
+    """Always re-read licence metadata; there is deliberately no cross-run cache."""
+    from radar.models import LicenceVerification
+    from .http import FetchError
+
+    spec = SOURCES[source]
+    documents, urls = [], []
+    errors = []
+    candidates = ([http.registry.url(source, "licence")] if spec.package else
+                  [item + "?f=json" for item in EPBC_ITEMS])
+    for url in candidates:
+        urls.append(url)
+        try:
+            document = http.get_json(url)
+            documents.append(document)
+            if spec.package:
+                result = document.get("result")
+                if document.get("success") is not True or not isinstance(result, dict) or result.get("name") != spec.package:
+                    errors.append("package identity/success missing or mismatched")
+                    continue
+                licence_id = result.get("license_id")
+                licence_url = result.get("license_url")
+                if not isinstance(licence_id, str) or not isinstance(licence_url, str):
+                    # Preserve malformed values in metadata, but do not let them
+                    # masquerade as a usable licence identity.
+                    licence_id = licence_id if isinstance(licence_id, str) else None
+                    licence_url = licence_url if isinstance(licence_url, str) else None
+                organisation = result.get("organization") or {}
+                organisation = (organisation.get("title") or organisation.get("name")) if isinstance(organisation, dict) else None
+                # isopen and a generic attribution licence do not prove version 4.0.
+                verified = (licence_id in {"cc-by", "cc-by-4.0", "CC-BY-4.0"} and
+                            licence_url in {CC_BY, CC_BY.rstrip("/"), CC_BY.replace("https:", "http:")})
+                incompatible = (isinstance(licence_id, str) and
+                                bool(re.search(r"custom|by-nc|by-sa|by-nd|cc0|3\.0|2\.0", licence_id, re.I)))
+                if licence_url and licence_url not in {CC_BY, CC_BY.rstrip("/"), CC_BY.replace("https:", "http:")}:
+                    incompatible = True
+                status = "verified" if verified else ("incompatible" if incompatible else "unknown")
+                return LicenceVerification(status, http.clock(), tuple(urls), licence_id, licence_url,
+                                           organisation, result.get("author"), tuple(documents),
+                                           None if verified else "explicit CC BY 4.0 identity and URL required")
+            # Licence terms must belong to this exact service/layer, never merely
+            # to an item with a similar title or to unrelated linked resources.
+            service = spec.layer.rsplit("/", 1)[0]
+            related = isinstance(document.get("url"), str) and document["url"] in {spec.layer, service}
+            terms = document.get("licenseInfo")
+            if not related or not isinstance(terms, str):
+                errors.append("item does not establish EPBC service relationship and licence")
+                continue
+            verified = bool(re.search(r"https?://creativecommons\.org/licenses/by/4\.0(?:/|[\s\"<>]|$)", terms) or
+                            re.search(r"\bCreative Commons Attribution(?: International)?\s+4\.0\b|\bCC[ -]BY[ -]4\.0\b", terms, re.I))
+            # Reject contradictory licences even if a CC BY link is also present.
+            incompatible = bool(re.search(r"by-nc|by-sa|by-nd|all rights reserved|non.commercial", terms, re.I))
+            incompatible = incompatible or bool(re.search(r"not (?:available|licensed) under|redistribution (?:is )?prohibited", terms, re.I))
+            if incompatible:
+                return LicenceVerification("incompatible", http.clock(), tuple(urls), None, None,
+                                           None, document.get("accessInformation"), tuple(documents), "EPBC licence is incompatible")
+            if verified:
+                organisation = "Department of Climate Change, Energy, the Environment and Water"
+                if organisation not in terms + str(document.get("accessInformation") or ""):
+                    organisation = None
+                return LicenceVerification("verified", http.clock(), tuple(urls), "CC-BY-4.0", CC_BY,
+                                           organisation, document.get("accessInformation"), tuple(documents))
+            errors.append("related EPBC item does not state licence version 4.0")
+        except FetchError as exc:
+            errors.append(str(exc))
+    return LicenceVerification("unknown", http.clock(), tuple(urls), metadata=tuple(documents), reason="; ".join(errors) or "licence not established")

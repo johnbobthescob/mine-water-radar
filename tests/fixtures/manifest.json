@@ -298,6 +298,186 @@
       "licence": null,
       "response_truncated": false,
       "transformation": "fictional synthetic test data; not evidence and not a real source snapshot"
+    },
+    {
+      "path": "synthetic/source-services.json",
+      "sha256": "8069d24fa3cb28de275030854e07dec34ef8e8f8eda81a552c02db3dbea058d4",
+      "origin": "synthetic",
+      "source_path": null,
+      "original_capture_time_utc": null,
+      "original_url": null,
+      "licence": null,
+      "response_truncated": false,
+      "transformation": "fictional synthetic test schemas, licence metadata and records; no captured licence bodies or real source evidence"
+    },
+    {
+      "path": "licence/minedex-package.json",
+      "kind": "licence_metadata",
+      "sha256": "6ffe51de44913ea5804c77b4c08247d8db927cbd591f333951bf692bd1e55332",
+      "origin": "recorded",
+      "source_path": "data/raw/m2-licence-verification/124f4b6cb9144d738fd5a13b282d1178/000000-6ffe51de44913ea5804c77b4c08247d8db927cbd591f333951bf692bd1e55332.bin",
+      "source": "minedex",
+      "original_capture_time_utc": "2026-11-22T18:41:54.194548+00:00",
+      "original_url": "https://catalogue.data.wa.gov.au/api/3/action/package_show?id=minedex-dmirs-001",
+      "licence": {
+        "name": "Dataset licence metadata; no opportunity evidence",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "response_truncated": false,
+      "transformation": "byte-for-byte permitted metadata response captured during M2; no source records, portal content or linked resources fetched",
+      "scope": "licence metadata only; not a dataset snapshot",
+      "response_status": 200,
+      "response_headers": {
+        "Date": "Sun, 22 Nov 2026 18:41:54 GMT",
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "15890",
+        "Connection": "close",
+        "Server": "nginx",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Vary": "Cookie",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "parameters": {
+        "id": "minedex-dmirs-001"
+      }
+    },
+    {
+      "path": "licence/tenements-package.json",
+      "kind": "licence_metadata",
+      "sha256": "592de85bbd3853f26a97edc1ca7b7b7773cf317deca10f307542d09ff5bcb280",
+      "origin": "recorded",
+      "source_path": "data/raw/m2-licence-verification/124f4b6cb9144d738fd5a13b282d1178/000001-592de85bbd3853f26a97edc1ca7b7b7773cf317deca10f307542d09ff5bcb280.bin",
+      "source": "tenements",
+      "original_capture_time_utc": "2026-11-22T18:41:55.167305+00:00",
+      "original_url": "https://catalogue.data.wa.gov.au/api/3/action/package_show?id=mining-tenements-dmirs-003",
+      "licence": {
+        "name": "Dataset licence metadata; no opportunity evidence",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "response_truncated": false,
+      "transformation": "byte-for-byte permitted metadata response captured during M2; no source records, portal content or linked resources fetched",
+      "scope": "licence metadata only; not a dataset snapshot",
+      "response_status": 200,
+      "response_headers": {
+        "Date": "Sun, 22 Nov 2026 18:41:55 GMT",
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "15666",
+        "Connection": "close",
+        "Server": "nginx",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Vary": "Cookie",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "parameters": {
+        "id": "mining-tenements-dmirs-003"
+      }
+    },
+    {
+      "path": "licence/wamex-package.json",
+      "kind": "licence_metadata",
+      "sha256": "0a24a7c84d8d55b61e7eecc8d358024195351706b9467e94250baee320de7377",
+      "origin": "recorded",
+      "source_path": "data/raw/m2-licence-verification/124f4b6cb9144d738fd5a13b282d1178/000002-0a24a7c84d8d55b61e7eecc8d358024195351706b9467e94250baee320de7377.bin",
+      "source": "wamex",
+      "original_capture_time_utc": "2026-11-22T18:41:56.099013+00:00",
+      "original_url": "https://catalogue.data.wa.gov.au/api/3/action/package_show?id=mineral-exploration-reports-wamex",
+      "licence": {
+        "name": "Dataset licence metadata; no opportunity evidence",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "response_truncated": false,
+      "transformation": "byte-for-byte permitted metadata response captured during M2; no source records, portal content or linked resources fetched",
+      "scope": "licence metadata only; not a dataset snapshot",
+      "response_status": 200,
+      "response_headers": {
+        "Date": "Sun, 22 Nov 2026 18:41:56 GMT",
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "11484",
+        "Connection": "close",
+        "Server": "nginx",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Vary": "Cookie",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "parameters": {
+        "id": "mineral-exploration-reports-wamex"
+      }
+    },
+    {
+      "path": "licence/epbc-service-item.json",
+      "kind": "licence_metadata",
+      "sha256": "a2562315612bfb132924c93a9bf39a8006db13e14962ba03d4c88499e3444398",
+      "origin": "recorded",
+      "source_path": "data/raw/m2-licence-verification/124f4b6cb9144d738fd5a13b282d1178/000003-a2562315612bfb132924c93a9bf39a8006db13e14962ba03d4c88499e3444398.bin",
+      "source": "epbc",
+      "original_capture_time_utc": "2026-11-22T18:42:13.286114+00:00",
+      "original_url": "https://www.arcgis.com/sharing/rest/content/items/ee02ed7773d44c6fa799bf558c70f81a?f=json",
+      "licence": {
+        "name": "Dataset licence metadata; no opportunity evidence",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "response_truncated": false,
+      "transformation": "byte-for-byte permitted metadata response captured during M2; no source records, portal content or linked resources fetched",
+      "scope": "licence metadata only; not a dataset snapshot",
+      "response_status": 200,
+      "response_headers": {
+        "Content-Type": "application/json;charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "Date": "Sun, 22 Nov 2026 18:41:57 GMT",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Server": "ArcGIS Online",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "Vary": "Origin,Authorization,X-Esri-Authorization",
+        "X-Cache": "Miss from cloudfront",
+        "Via": "1.1 c8cd8152d1440b4a651e6ad9d0d718f2.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "SEA900-P3",
+        "X-Amz-Cf-Id": "yi-AESqlp_ezasymRjrQNWYrg2I2SHROJDCHel0ng8lso_8dYAlRlA=="
+      },
+      "parameters": {
+        "f": "json"
+      }
+    },
+    {
+      "path": "licence/epbc-layer-item.json",
+      "kind": "licence_metadata",
+      "sha256": "5240e5165df350bfead1b125c95a8a11eb64293a8103f7b4ebb92bd58200a37e",
+      "origin": "recorded",
+      "source_path": "data/raw/m2-licence-verification/124f4b6cb9144d738fd5a13b282d1178/000004-5240e5165df350bfead1b125c95a8a11eb64293a8103f7b4ebb92bd58200a37e.bin",
+      "source": "epbc",
+      "original_capture_time_utc": "2026-11-22T18:42:14.679154+00:00",
+      "original_url": "https://www.arcgis.com/sharing/rest/content/items/ff8ef1108dd148c99fad93799d67ee94?f=json",
+      "licence": {
+        "name": "Dataset licence metadata; no opportunity evidence",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "response_truncated": false,
+      "transformation": "byte-for-byte permitted metadata response captured during M2; no source records, portal content or linked resources fetched",
+      "scope": "licence metadata only; not a dataset snapshot",
+      "response_status": 200,
+      "response_headers": {
+        "Content-Type": "application/json;charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "Date": "Sun, 22 Nov 2026 18:42:14 GMT",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Server": "ArcGIS Online",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Expires": "-1",
+        "Vary": "Origin,Authorization,X-Esri-Authorization",
+        "X-Cache": "Miss from cloudfront",
+        "Via": "1.1 a757dd17f5ecae04edf16d18f7b8dd3a.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Pop": "SEA900-P3",
+        "X-Amz-Cf-Id": "Q3NwBGKsstgeQ2FRKptPsiDhBaGiSmHeFNMfMtSgIqSLyt2RE0nRvA=="
+      },
+      "parameters": {
+        "f": "json"
+      }
     }
   ]
 }

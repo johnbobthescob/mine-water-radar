@@ -1,0 +1,536 @@
+{
+  "minedex": {
+    "schema": {
+      "fields": [
+        {
+          "name": "transport_id",
+          "type": "esriFieldTypeOID"
+        },
+        {
+          "name": "site_code",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "site_title",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "short_name",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "site_type_",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "site_sub_t",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "site_stage",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "site_commo",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "target_com",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "commodity",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "proj_code",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "proj_title",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "latitude",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "longitude",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "web_link",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "extract_da",
+          "type": "esriFieldTypeDate"
+        }
+      ],
+      "maxRecordCount": 2,
+      "objectIdField": "transport_id",
+      "advancedQueryCapabilities": {
+        "supportsPagination": true,
+        "supportsOrderBy": true
+      }
+    },
+    "records": [
+      {
+        "site_code": "SYNTH-MINEDEX-1",
+        "site_title": "Fictional borefield",
+        "short_name": null,
+        "site_type_": "Infrastructure",
+        "site_sub_t": "Borefield",
+        "site_stage": "Proposed",
+        "site_commo": null,
+        "target_com": null,
+        "commodity": null,
+        "proj_code": "SYNTH-PROJECT",
+        "proj_title": "Fictional project",
+        "latitude": -28.0,
+        "longitude": 120.0,
+        "web_link": null,
+        "extract_da": 1795046400000,
+        "transport_id": 1
+      },
+      {
+        "site_code": "SYNTH-MINEDEX-2",
+        "site_title": "Fictional borefield",
+        "short_name": null,
+        "site_type_": "Infrastructure",
+        "site_sub_t": "Borefield",
+        "site_stage": "Proposed",
+        "site_commo": null,
+        "target_com": null,
+        "commodity": null,
+        "proj_code": "SYNTH-PROJECT",
+        "proj_title": "Fictional project",
+        "latitude": -28.0,
+        "longitude": 120.0,
+        "web_link": null,
+        "extract_da": 1795046400000,
+        "transport_id": 2
+      },
+      {
+        "site_code": "SYNTH-MINEDEX-3",
+        "site_title": "Fictional borefield",
+        "short_name": null,
+        "site_type_": "Infrastructure",
+        "site_sub_t": "Borefield",
+        "site_stage": "Proposed",
+        "site_commo": null,
+        "target_com": null,
+        "commodity": null,
+        "proj_code": "SYNTH-PROJECT",
+        "proj_title": "Fictional project",
+        "latitude": -28.0,
+        "longitude": 120.0,
+        "web_link": null,
+        "extract_da": 1795046400000,
+        "transport_id": 3
+      }
+    ],
+    "licence": {
+      "success": true,
+      "result": {
+        "name": "minedex-dmirs-001",
+        "license_id": "cc-by-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "organization": {
+          "title": "FICTIONAL TEST CUSTODIAN"
+        }
+      }
+    }
+  },
+  "tenements": {
+    "schema": {
+      "fields": [
+        {
+          "name": "transport_id",
+          "type": "esriFieldTypeOID"
+        },
+        {
+          "name": "tenid",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "fmt_tenid",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "type",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "tenstatus",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holdercnt",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holder1",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holder2",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holder3",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holder4",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holder5",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holder6",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holder7",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holder8",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "holder9",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "grantdate",
+          "type": "esriFieldTypeDate"
+        },
+        {
+          "name": "startdate",
+          "type": "esriFieldTypeDate"
+        },
+        {
+          "name": "enddate",
+          "type": "esriFieldTypeDate"
+        },
+        {
+          "name": "legal_area",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "unit_of_me",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "extract_da",
+          "type": "esriFieldTypeDate"
+        }
+      ],
+      "maxRecordCount": 2,
+      "objectIdField": "transport_id",
+      "advancedQueryCapabilities": {
+        "supportsPagination": true,
+        "supportsOrderBy": true
+      }
+    },
+    "records": [
+      {
+        "tenid": "SYNTH-TENEMENTS-1",
+        "fmt_tenid": null,
+        "type": null,
+        "tenstatus": "LIVE",
+        "holdercnt": 2,
+        "holder1": "FICTIONAL HOLDER ONE",
+        "holder2": "FICTIONAL HOLDER TWO",
+        "holder3": null,
+        "holder4": null,
+        "holder5": null,
+        "holder6": null,
+        "holder7": null,
+        "holder8": null,
+        "holder9": null,
+        "grantdate": -563068800000,
+        "startdate": null,
+        "enddate": null,
+        "legal_area": null,
+        "unit_of_me": null,
+        "extract_da": null,
+        "transport_id": 1
+      },
+      {
+        "tenid": "SYNTH-TENEMENTS-2",
+        "fmt_tenid": null,
+        "type": null,
+        "tenstatus": "LIVE",
+        "holdercnt": 2,
+        "holder1": "FICTIONAL HOLDER ONE",
+        "holder2": "FICTIONAL HOLDER TWO",
+        "holder3": null,
+        "holder4": null,
+        "holder5": null,
+        "holder6": null,
+        "holder7": null,
+        "holder8": null,
+        "holder9": null,
+        "grantdate": -563068800000,
+        "startdate": null,
+        "enddate": null,
+        "legal_area": null,
+        "unit_of_me": null,
+        "extract_da": null,
+        "transport_id": 2
+      },
+      {
+        "tenid": "SYNTH-TENEMENTS-3",
+        "fmt_tenid": null,
+        "type": null,
+        "tenstatus": "LIVE",
+        "holdercnt": 2,
+        "holder1": "FICTIONAL HOLDER ONE",
+        "holder2": "FICTIONAL HOLDER TWO",
+        "holder3": null,
+        "holder4": null,
+        "holder5": null,
+        "holder6": null,
+        "holder7": null,
+        "holder8": null,
+        "holder9": null,
+        "grantdate": -563068800000,
+        "startdate": null,
+        "enddate": null,
+        "legal_area": null,
+        "unit_of_me": null,
+        "extract_da": null,
+        "transport_id": 3
+      }
+    ],
+    "licence": {
+      "success": true,
+      "result": {
+        "name": "mining-tenements-dmirs-003",
+        "license_id": "cc-by-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "organization": {
+          "title": "FICTIONAL TEST CUSTODIAN"
+        }
+      }
+    }
+  },
+  "wamex": {
+    "schema": {
+      "fields": [
+        {
+          "name": "transport_id",
+          "type": "esriFieldTypeOID"
+        },
+        {
+          "name": "anumber",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "title",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "project",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "operator",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "report_year",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "date_released",
+          "type": "esriFieldTypeDate"
+        },
+        {
+          "name": "abstract",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "dpxe_abs",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "dpxe_rep",
+          "type": "esriFieldTypeString"
+        }
+      ],
+      "maxRecordCount": 2,
+      "objectIdField": "transport_id",
+      "advancedQueryCapabilities": {
+        "supportsPagination": true,
+        "supportsOrderBy": true
+      }
+    },
+    "records": [
+      {
+        "anumber": 9000001,
+        "title": "Fictional dewatering report",
+        "project": null,
+        "operator": "FICTIONAL HISTORICAL REPORTER",
+        "report_year": 2026,
+        "date_released": 1795046400000,
+        "abstract": "Dewatering investigation performed.",
+        "dpxe_abs": null,
+        "dpxe_rep": null,
+        "transport_id": 1
+      },
+      {
+        "anumber": 9000002,
+        "title": "Fictional dewatering report",
+        "project": null,
+        "operator": "FICTIONAL HISTORICAL REPORTER",
+        "report_year": 2026,
+        "date_released": 1795046400000,
+        "abstract": "Dewatering investigation performed.",
+        "dpxe_abs": null,
+        "dpxe_rep": null,
+        "transport_id": 2
+      },
+      {
+        "anumber": 9000003,
+        "title": "Fictional dewatering report",
+        "project": null,
+        "operator": "FICTIONAL HISTORICAL REPORTER",
+        "report_year": 2026,
+        "date_released": 1795046400000,
+        "abstract": "Dewatering investigation performed.",
+        "dpxe_abs": null,
+        "dpxe_rep": null,
+        "transport_id": 3
+      }
+    ],
+    "licence": {
+      "success": true,
+      "result": {
+        "name": "mineral-exploration-reports-wamex",
+        "license_id": "cc-by-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "organization": {
+          "title": "FICTIONAL TEST CUSTODIAN"
+        }
+      }
+    }
+  },
+  "epbc": {
+    "schema": {
+      "fields": [
+        {
+          "name": "transport_id",
+          "type": "esriFieldTypeOID"
+        },
+        {
+          "name": "REFERENCE_NUMBER",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "NAME",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "PRIMARY_JURISDICTION",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "CATEGORY",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "REFERRAL_DECISION",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "STANDARD_DETERMINATION",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "STATUS_DESCRIPTION",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "STAGE_NAME",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "REFERRAL_TYPE",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "YEAR",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "REFERRAL_URL",
+          "type": "esriFieldTypeString"
+        }
+      ],
+      "maxRecordCount": 2,
+      "objectIdField": "transport_id",
+      "advancedQueryCapabilities": {
+        "supportsPagination": true,
+        "supportsOrderBy": true
+      }
+    },
+    "records": [
+      {
+        "REFERENCE_NUMBER": "SYNTH-EPBC-1",
+        "NAME": "Fictional project",
+        "PRIMARY_JURISDICTION": "WA",
+        "CATEGORY": "Mining",
+        "REFERRAL_DECISION": "Controlled Action",
+        "STANDARD_DETERMINATION": "CA",
+        "STATUS_DESCRIPTION": "Assessment Method Determined",
+        "STAGE_NAME": "Assessment Approach",
+        "REFERRAL_TYPE": null,
+        "YEAR": 2021.0,
+        "REFERRAL_URL": "http:\\\\epbcnotices.environment.gov.au\\referralslist",
+        "transport_id": 1
+      },
+      {
+        "REFERENCE_NUMBER": "SYNTH-EPBC-2",
+        "NAME": "Fictional project",
+        "PRIMARY_JURISDICTION": "WA",
+        "CATEGORY": "Mining",
+        "REFERRAL_DECISION": "Controlled Action",
+        "STANDARD_DETERMINATION": "CA",
+        "STATUS_DESCRIPTION": "Assessment Method Determined",
+        "STAGE_NAME": "Assessment Approach",
+        "REFERRAL_TYPE": null,
+        "YEAR": 2021.0,
+        "REFERRAL_URL": "http:\\\\epbcnotices.environment.gov.au\\referralslist",
+        "transport_id": 2
+      },
+      {
+        "REFERENCE_NUMBER": "SYNTH-EPBC-3",
+        "NAME": "Fictional project",
+        "PRIMARY_JURISDICTION": "WA",
+        "CATEGORY": "Mining",
+        "REFERRAL_DECISION": "Controlled Action",
+        "STANDARD_DETERMINATION": "CA",
+        "STATUS_DESCRIPTION": "Assessment Method Determined",
+        "STAGE_NAME": "Assessment Approach",
+        "REFERRAL_TYPE": null,
+        "YEAR": 2021.0,
+        "REFERRAL_URL": "http:\\\\epbcnotices.environment.gov.au\\referralslist",
+        "transport_id": 3
+      }
+    ],
+    "licence": {
+      "id": "ee02ed7773d44c6fa799bf558c70f81a",
+      "url": "https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/EPBC_Referrals/MapServer/0",
+      "licenseInfo": "https://creativecommons.org/licenses/by/4.0/",
+      "accessInformation": "Fictional test credit",
+      "owner": "FICTIONAL TEST CUSTODIAN"
+    }
+  },
+  "origin": "synthetic"
+}

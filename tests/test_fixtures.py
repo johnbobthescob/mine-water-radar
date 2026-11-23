@@ -32,7 +32,17 @@ def test_fixture_manifest_hashes_and_provenance_are_valid():
         assert hashlib.sha256(payload).hexdigest() == entry["sha256"]
         assert entry["origin"] in {"recorded", "synthetic"}
         if entry["origin"] == "recorded":
-            assert entry["source_path"].startswith("research/samples/") or relpath.startswith("replay/")
+            if entry.get("kind") == "licence_metadata":
+                from radar.sources.registry import CKAN, EPBC_ITEMS, SourceRegistry
+
+                url = entry["original_url"]
+                assert url.startswith(CKAN + "?") or any(url.startswith(item + "?") for item in EPBC_ITEMS)
+                assert SourceRegistry().validate(url) == entry["source"]
+                assert entry["response_status"] == 200
+                assert entry["response_truncated"] is False
+                assert entry["scope"] == "licence metadata only; not a dataset snapshot"
+            else:
+                assert entry["source_path"].startswith("research/samples/") or relpath.startswith("replay/")
             assert entry["original_capture_time_utc"] or relpath.startswith("replay/")
             assert entry["licence"]["url"] == "https://creativecommons.org/licenses/by/4.0/"
             assert "response_truncated" in entry

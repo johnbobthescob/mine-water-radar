@@ -25,9 +25,10 @@ class FetchError(RuntimeError):
 
 
 class ResponseError(FetchError):
-    def __init__(self, message: str, status: int | None = None):
+    def __init__(self, message: str, status: int | None = None, response=None):
         super().__init__(message)
         self.status = status
+        self.response = response
 
 
 class ArcGISError(ResponseError):
@@ -49,7 +50,8 @@ class _NoRedirect(HTTPRedirectHandler):
         return None
 
 
-def urllib_transport(url: str, timeout: float) -> Response:
+def urllib_transport(url: str, timeout: float, *, registry: SourceRegistry | None = None) -> Response:
+    (registry or SourceRegistry()).validate(url)
     # The opener never follows redirects, including before HTTPError is returned.
     opener = build_opener(_NoRedirect())
     request = Request(url, headers={"Accept": "application/json", "User-Agent": "WA-Mine-Water-Radar/0.1"})
@@ -62,11 +64,11 @@ def urllib_transport(url: str, timeout: float) -> Response:
 
 
 class HttpClient:
-    def __init__(self, *, transport: Callable = urllib_transport, registry: SourceRegistry | None = None,
+    def __init__(self, *, transport: Callable | None = None, registry: SourceRegistry | None = None,
                  clock: Callable = lambda: datetime.now(timezone.utc), sleep: Callable = time.sleep,
                  raw_dir: Path | str | None = DEFAULT_RAW_DIR, data_mode: str = "live"):
-        self.transport = transport
         self.registry = registry or SourceRegistry()
+        self.transport = transport or (lambda url, timeout: urllib_transport(url, timeout, registry=self.registry))
         self.clock, self.sleep = clock, sleep
         self.raw_dir = Path(raw_dir) / uuid4().hex if raw_dir is not None else None
         self.data_mode = data_mode
@@ -132,25 +134,50 @@ class HttpClient:
                 self.sleep(delay)
                 continue
             if not 200 <= response.status < 300:
-                raise ResponseError(f"HTTP {response.status}", response.status)
+                raise ResponseError(f"HTTP {response.status}", response.status, response)
             return response
         raise AssertionError("unreachable")
 
     def get_json(self, url: str, *, licence: str | None = None) -> dict:
-        response = self.get(url, licence=licence)
+        try:
+            response = self.get(url, licence=licence)
+        except ResponseError as exc:
+            # Some services return an unsupported-operation ArcGIS object with
+            # HTTP 400; preserve it for the narrowly allowed inventory fallback.
+            if exc.response is not None:
+                try:
+                    self._decode_json(exc.response)
+                except ArcGISError:
+                    raise
+                except ResponseError:
+                    pass
+            raise
+        return self._decode_json(response)
+
+    @staticmethod
+    def _decode_json(response: Response) -> dict:
         content_type = next((value for key, value in response.headers.items() if key.lower() == "content-type"), "")
         if "html" in content_type.lower() or response.body.lstrip().startswith(b"<"):
             raise ResponseError("HTML received instead of JSON")
         try:
             def invalid_constant(value):
                 raise ValueError(f"invalid JSON constant {value}")
-            value = json.loads(response.body, parse_constant=invalid_constant)
+            def unique_object(pairs):
+                result = {}
+                for key, value in pairs:
+                    if key in result:
+                        raise ValueError(f"duplicate JSON key: {key}")
+                    result[key] = value
+                return result
+            value = json.loads(response.body, parse_constant=invalid_constant, object_pairs_hook=unique_object)
         except (ValueError, UnicodeError) as exc:
             raise ResponseError("invalid JSON response") from exc
         if not isinstance(value, dict):
             raise ResponseError("JSON object required")
         if "error" in value:
-            if not isinstance(value["error"], dict):
+            if (not isinstance(value["error"], dict) or
+                    isinstance(value["error"].get("code"), bool) or
+                    not isinstance(value["error"].get("code"), int)):
                 raise ResponseError("malformed ArcGIS error")
             raise ArcGISError(value["error"])
         return value
